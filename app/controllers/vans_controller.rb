@@ -3,7 +3,7 @@ class VansController < ApplicationController
   end
 
   def show
-    @van = params[:id]
+    @van = Van.find(params[:id])
   end
 
   def new
