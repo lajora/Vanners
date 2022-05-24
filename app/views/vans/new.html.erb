@@ -1,8 +1,13 @@
-
-<%= simple_form_for @van do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-sm-12">
+        <%= simple_form_for @van do |f| %>
+          <%= f.input :title, hint: 'Be creative!' %>
+          <%= f.input :description, hint: 'Please, provide a detailed description of your Van :)'%>
+          <%= f.input :price %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: 'btn btn-primary rounded'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
