@@ -24,7 +24,7 @@
         </div>
         <div class="total-book-section">
           <div class="total-price">
-            <h6 class="h6-bold">Total</h6> 
+            <h6 class="h6-bold">Total</h6>
             <p class="p-bold">€<%= @van.price * 30%></p>
           </div>
             <%= f.submit "Book now", class: "btn-book" %>
@@ -40,10 +40,11 @@
       <div class="owner-info col-4">
         <h6 class="h6-bold">Owner details</h6>
         <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
-        <h6>John the Puppy</h6>
-        <p>@johnthepuppy</p>
+        <h6><%= @van.user.first_name %> <%= @van.user.last_name %></h6>
+        <p><%= @van.user.email %></p>
+        <%# <h6>John the Puppy</h6>
+        <p>@johnthepuppy</p> %>
       </div>
     </div>
   </div>
 </div>
-
