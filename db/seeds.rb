@@ -11,10 +11,10 @@ Van.destroy_all
 User.destroy_all
 
 lara = User.new({
-    first_name: 'Lara',
-    last_name: "Keen",
-    email: "lara@vanners.com",
-    password: "lara@vanners.com",
+  first_name: 'Lara',
+  last_name: "Keen",
+  email: "lara@vanners.com",
+  password: "lara@vanners.com",
 })
 lara.save
 
@@ -56,7 +56,7 @@ van_2 = Van.new({
   price: 45
 })
 van_2.user = david
-van_2.save 
+van_2.save
 
 van_3 = Van.new({
   title: "Storyteller Overland Beast Mode",

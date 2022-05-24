@@ -1,0 +1,9 @@
+<div class="container">
+  <div class='confirm-flex'>
+    <h1>Thank you for your booking request!</h1>
+    <p>The owner now has 24 hours to respond to your booking request. <br>
+    Once the owner has responded, you will receive an email on:</p>
+    <p><strong><%= current_user.email %></strong></p>
+    <%= link_to "Continue browsing", vans_path, class: 'btn btn-book'%>
+  </div>
+</div>
