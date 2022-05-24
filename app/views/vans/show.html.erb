@@ -7,11 +7,12 @@
           <h4>Rental details</h6>
           <div class="booking-section">
             <h6>Pick-up date</h6>
-            <p>01-08-2022</p>
+            <%= simple_form_for [ @van, @booking ] do |f| %>
+              <%= f.input :date_from, label: false%>
           </div>
           <div class="booking-section">
             <h6>Drop-off date</h6>
-            <p>01-09-2022</p>
+              <%= f.input :date_until, label: false%>
           </div>
           <div class="booking-section">
             <h6>Daily rate</h6>
@@ -26,7 +27,8 @@
             <h6 class="h6-bold">Total</h6> 
             <p class="p-bold">€<%= @van.price * 30%></p>
           </div>
-          <%= link_to "Book now", "#", class:"btn-book"%>
+            <%= f.submit "Book now", class: "btn-book" %>
+          <% end %>
         </div>
       </div>
     </div>
