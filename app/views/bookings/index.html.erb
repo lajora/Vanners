@@ -1,2 +1,7 @@
-<h1>Bookings#index</h1>
+<h1>Your Bookings</h1>
 <p>Find me in app/views/bookings/index.html.erb</p>
+<ol>
+<% @bookings.each do |b| %>
+  <li><%=@booking%></li>
+<% end %>
+</ol>
