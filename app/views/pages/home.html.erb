@@ -4,8 +4,15 @@
     <% @skip_footer = true  %>
     <% @skip_navbar = true %>
       <h2>vanners</h2>
-      <%= link_to "Sign in", new_user_session_path, class: "btn-transparent" %>
+      <% if user_signed_in? %>
+        <h5>Hello again <%= current_user.first_name.capitalize  %>!</h5>
 
+      <% elsif !user_signed_in? %>
+        <div class="buttons-container">
+          <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-black" %>
+        </div>
+      <% end %>
     </div>
     <div class="main-text">
       <h1>Rent a van, <br>
@@ -14,7 +21,7 @@
       <%= image_tag "world-icon.png" , class:"img-world"%>
     </div>
     <div class="buttons-container">
-      <a href="" class="btn-black">Browse vans</a>
+      <%= link_to "Browse vans", vans_path, class: "btn btn-black"%>
       <%= link_to "Upload your van", new_van_path, class: "btn-transparent" %>
     </div>
   </div>
