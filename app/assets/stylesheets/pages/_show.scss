@@ -1,0 +1,80 @@
+.van-page{
+  padding: 20px 10px;
+  .img-main {
+    border-radius: 4px;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    padding: 0px;
+  }
+  .row-bottom{
+    margin-top: 20px;
+  }
+  .h6-bold, .p-bold{
+    font-weight: bold;
+  }
+}
+
+.van-details {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-weight: 600;
+    font-size: 30px;
+    margin: 20px 10px ;
+    color: $light-black;
+  }
+  p {
+    font-weight: lighter;
+    font-size: 14px;
+    margin: 10px;
+    color: $light-black;
+    text-align: justify;
+  }
+}
+
+.total-price{
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-details {
+  height: 100%;
+  padding: 0px;
+  color: $light-black;
+}
+
+.payment-info {
+  text-align: center;
+  height: 350px;
+  border: 1.5px solid $light-pink;
+}
+
+.total-book-section {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid $light-pink;
+  height: 150px;
+  justify-content: center;
+  padding: 40px 10px;
+}
+
+.booking-section {
+  text-align: left;
+  margin: 40px 10px;
+  p {
+    font-weight: lighter;
+  }
+}
+
+.owner-info {
+  color: $light-black;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  .avatar-owner{
+    margin: 20px 10px;
+  }
+  .h6-bold{
+    padding-top: 20px;
+  }
+}

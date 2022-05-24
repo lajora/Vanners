@@ -1,0 +1,11 @@
+.confirm-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    margin: 100px 20px;
+  }
+  .btn {
+    margin: 50px;
+  }
+}
