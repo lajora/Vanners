@@ -18,6 +18,16 @@ class VansController < ApplicationController
     end
   end
 
+  def edit
+    @van = Van.find(params[:id])
+  end
+
+  def update
+    @van = Van.find(params[:id])
+    @van.update(van_params)
+    redirect_to van_path(@van)
+  end
+
   private
 
   def van_params
