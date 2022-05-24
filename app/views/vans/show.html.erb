@@ -1,10 +1,33 @@
 <div class="container">
-  <div class="van-details">
-    <%= @van.title %>
-    <%= @van.description%>
-  </div>
-  <div class="booking-details">
-    
+  <div class="van-page row">
+    <div class="van-details col-8">
+      <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+      <h1><%= @van.title %></h1>
+      <p><%= @van.description%></p>
+    </div>
+
+    <div class="booking-details col-4">
+      <div class="payment-info">
+        <h4>Rental details</h6>
+        <div class="booking-section">
+          <h6>Pick-up date</h6>
+          <p>01-08-2022</p>
+        </div>
+        <div class="booking-section">
+          <h6>Drop-off date</h6>
+          <p>01-09-2022</p>
+        </div>
+        <div class="booking-section">
+          <h6>Daily rate</h6>
+          <p>30 days @ €<%= @van.price %></p>
+        </div>
+      <div class="owner-info">
+        <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar" %>
+        <h6>John the Puppy</h6>
+        <p>@johnthepuppy</p>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
 
