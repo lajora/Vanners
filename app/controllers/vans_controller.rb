@@ -3,6 +3,7 @@ class VansController < ApplicationController
   end
 
   def show
+    @van = params[:id]
   end
 
   def new
