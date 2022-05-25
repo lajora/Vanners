@@ -1,6 +1,14 @@
 class VansController < ApplicationController
   def index
     @vans = policy_scope(Van)
+    @markers = @vans.geocoded.map do |van|
+      {
+        lat: van.latitude,
+        lng: van.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { van: van }),
+        image_url: helpers.asset_url("van-logo-red.png")
+      }
+    end
   end
 
   def show
