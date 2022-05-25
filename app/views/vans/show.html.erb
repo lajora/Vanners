@@ -1,2 +1,54 @@
-<h1>Vans#show</h1>
-<p>Find me in app/views/vans/show.html.erb</p>
+<div class="container">
+  <div class="van-page">
+    <div class="row justify-content-between">
+      <% if @van.photo.key %>
+        <%= cl_image_tag @van.photo.key, class: "img-main col-7" %>
+      <% else %>
+        <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class: "img-main col-7" %>
+      <% end %>
+      <div class="booking-details col-4">
+        <div class="payment-info">
+          <h4>Rental details</h6>
+          <div class="booking-section">
+            <h6>Pick-up date</h6>
+            <%= simple_form_for [ @van, @booking ] do |f| %>
+              <%= f.input :date_from, label: false%>
+          </div>
+          <div class="booking-section">
+            <h6>Drop-off date</h6>
+              <%= f.input :date_until, label: false%>
+          </div>
+          <div class="booking-section">
+            <h6>Daily rate</h6>
+            <div class="total-price">
+              <p>30 days @ €<%= @van.price %></p>
+              <p class="p-bold">€<%= @van.price * 30%></p>
+            </div>
+          </div>
+        </div>
+        <div class="total-book-section">
+          <div class="total-price">
+            <h6 class="h6-bold">Total</h6>
+            <p class="p-bold">€<%= @van.price * 30%></p>
+          </div>
+            <%= f.submit "Book now", class: "btn-book" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row row-bottom justify-content-between">
+      <div class="van-details col-7">
+        <h1><%= @van.title %></h1>
+        <p><%= @van.description%></p>
+      </div>
+      <div class="owner-info col-4">
+        <h6 class="h6-bold">Owner details</h6>
+        <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
+        <h6><%= @van.user.first_name %> <%= @van.user.last_name %></h6>
+        <p><%= @van.user.email %></p>
+        <%# <h6>John the Puppy</h6>
+        <p>@johnthepuppy</p> %>
+      </div>
+    </div>
+  </div>
+</div>

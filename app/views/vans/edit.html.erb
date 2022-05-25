@@ -1,0 +1,13 @@
+  <div class="container">
+    <div class="row justify-content-center" style="margin-top: 4rem">
+      <div class="col-lg-6 col-sm-12">
+        <%= simple_form_for @van do |f| %>
+          <%= f.input :title, hint: 'Be creative!' %>
+          <%= f.input :description, hint: 'Please, provide a detailed description of your Van :)'%>
+          <%= f.input :price %>
+          <%= f.input :photo, as: :file %>
+           <%= f.button :submit, class: 'btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
