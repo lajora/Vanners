@@ -1,12 +1,11 @@
 .container {
   width: 90%;
   margin: 0 auto;
-  text-align: center;
   h3 {
     letter-spacing: -1px;
-    display: inline-block;
-    border-bottom: solid 5px #fbb03c;
     padding-top: 20px;
+    text-decoration: underline solid $yellow 5px;
+    font-style: italic;
   }
 }
 
