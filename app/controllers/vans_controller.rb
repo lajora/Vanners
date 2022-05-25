@@ -9,6 +9,7 @@ class VansController < ApplicationController
         image_url: helpers.asset_url("van-logo-red.png")
       }
     end
+    @cards_view = false
   end
 
   def show
