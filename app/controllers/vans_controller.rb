@@ -1,6 +1,12 @@
 class VansController < ApplicationController
   def index
     @vans = Van.all
+    @markers = @vans.geocoded.map do |van|
+      {
+        lat: van.latitude,
+        lng: van.longitude
+      }
+    end
   end
 
   def show
