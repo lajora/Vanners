@@ -7,15 +7,20 @@
 
 .van-card {
   list-style: none;
-  border: solid blueviolet 4px;
-  width: 25%;
+  border: solid $blue 4px;
   margin: 10px;
   border-radius: 15px;
   padding: 5px;
+  width: 90%;
+  text-decoration: none;
   p {
     display: block;
     border: solid 1px black;
     margin: 0;
     font-style: italic;
+  }
+  img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
   }
 }
