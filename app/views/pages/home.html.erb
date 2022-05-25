@@ -3,7 +3,9 @@
     <div class="navbar-container">
     <% @skip_footer = true  %>
     <% @skip_navbar = true %>
-      <h2>vanners</h2>
+      <%= link_to root_path do %>
+        <h2>vanners</h2>
+      <% end %>
       <% if user_signed_in? %>
         <h5>Hello again <%= current_user.first_name.capitalize  %>!</h5>
 
