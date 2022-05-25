@@ -22,15 +22,15 @@
   <div class="available">
     <div class="cards">
       <% @vans.each do |van| %>
-          <div class="van-card">
-            <%= link_to van_path(van) do %>
-              <h4><%= van.title %> </h4>
-            <% end %>
-            <br>
-            <p><%= truncate(van.description, :length => 70) %> </p>
-            <br>
-            <p><%= van.price %></p>
-          </div>
+        <div class="van-card">
+          <%= link_to van_path(van) do %>
+            <h4><%= van.title %> </h4>
+          <% end %>
+          <br>
+          <p><%= truncate(van.description, :length => 70) %> </p>
+          <br>
+          <p><%= van.price %></p>
+        </div>
       <% end %>
     </div>
   </div>
