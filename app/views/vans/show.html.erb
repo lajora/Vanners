@@ -31,8 +31,16 @@
             <h6 class="h6-bold">Total</h6>
             <p class="p-bold">€<%= @van.price * 30%></p>
           </div>
-            <%= f.submit "Book now", class: "btn-book" %>
-          <% end %>
+            <% if policy(@van).edit? %>
+              <%= link_to "Update", edit_van_path(@van) %>
+            <% end %>
+            <% if policy(@van).destroy? && @van.bookings.nil? %>
+              <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
+            <% end %>
+            <% if @van.user != current_user %>
+              <%= f.submit "Book now", class: "btn-book" %>
+             <% end %>
+            <% end %>
         </div>
       </div>
     </div>
