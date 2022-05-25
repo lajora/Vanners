@@ -1,5 +1,5 @@
 <% if van.photo.key %>
-        <%= cl_image_tag @van.photo.key, class:"img-info-window"  %>
+        <%= cl_image_tag van.photo.key, class:"img-info-window"  %>
       <% else %>
         <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class:"img-info-window" %>
       <% end %>
