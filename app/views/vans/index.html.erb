@@ -19,20 +19,17 @@
   <h3>Available vans</h3>
 
 
-  <div class="available">
     <div class="cards">
       <% @vans.each do |van| %>
-        <div class="van-card">
-          <%= link_to van_path(van) do %>
-            <h4><%= van.title %> </h4>
-          <% end %>
-          <br>
-          <p><%= truncate(van.description, :length => 70) %> </p>
-          <br>
-          <p><%= van.price %></p>
-        </div>
+        <%= link_to van_path(van) do %>
+          <div class="van-card">
+            <div class="i"><%= image_tag "van1.jpg"%></div>
+            <h4><%= van.title %> - €<%= van.price %> </h4>
+            <p><%= truncate(van.description, :length => 70) %> </p>
+            <br>
+          </div>
+        <% end %>
       <% end %>
     </div>
-  </div>
 
 </div>
