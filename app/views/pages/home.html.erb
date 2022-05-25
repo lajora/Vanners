@@ -3,30 +3,32 @@
     <div class="navbar-container">
     <% @skip_footer = true  %>
     <% @skip_navbar = true %>
-      <%= link_to root_path do %>
-        <h2>vanners</h2>
-      <% end %>
-      <% if user_signed_in? %>
-        <h5>Hello again <%= current_user.first_name.capitalize  %>!</h5>
 
+      <%= link_to root_path do %>
+        <h2 class="vl"><%= image_tag "vanners-logo.png" %></h2>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <h4>Hello again, <%= current_user.first_name.capitalize  %>!</h4>
       <% elsif !user_signed_in? %>
         <div class="buttons-container">
           <%= link_to "Sign in", new_user_session_path, class: "btn btn-transparent" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-black" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-yellow" %>
         </div>
       <% end %>
     </div>
+
     <div class="main-text">
-      <h1>Rent a van, <br>
-      travel the world</h1>
-      <%= image_tag "van-logo.png" , class:"img-van"%>
-      <%= image_tag "world-icon.png" , class:"img-world"%>
+      <h1>
+        <span data-controller="typed-js"></span>
+      </h1>
     </div>
     <div class="buttons-container">
       <%= link_to "Browse vans", vans_path, class: "btn btn-black"%>
       <% if policy(Van).create?  %>
-      <%= link_to "Upload your van", new_van_path, class: "btn-transparent" %>
+      <%= link_to "Upload your van", new_van_path, class: "btn-upload" %>
       <% end %>
+
     </div>
   </div>
   <div class="media-container">
