@@ -17,6 +17,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  a {
+    text-decoration: none;
+    color: $light-black;
+  }
   h5 {
     font-size: 14px;
     margin: 0;
