@@ -11,11 +11,11 @@ export default class extends Controller {
     if (this.buttonTarget.innerText == "Cards view") {
       this.buttonTarget.innerText = "Map view"
       this.cardsTarget.classList.remove("hidden")
-      this.mapTarget.classList.add("hidden")
+      this.mapTarget.classList.add("invisible")
     } else {
       this.buttonTarget.innerText = "Cards view"
       this.cardsTarget.classList.add("hidden")
-      this.mapTarget.classList.remove("hidden")
+      this.mapTarget.classList.remove("invisible")
     }
   }
 
