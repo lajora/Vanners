@@ -9,10 +9,12 @@ class VansController < ApplicationController
   end
 
   def new
+    authorize @van
     @van = Van.new
   end
 
   def create
+    authorize @van
     @van = Van.new(van_params)
     @van.user = current_user
     if @van.save!
