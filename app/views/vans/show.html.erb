@@ -6,6 +6,8 @@
       <% else %>
         <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class: "img-main col-7" %>
       <% end %>
+
+<%# Dates Form %>
       <div class="booking-details col-4">
         <div class="payment-info">
           <h4>Rental details</h6>
@@ -26,35 +28,43 @@
             </div>
           </div>
         </div>
+
+<%# Total Price Section, "BOOK" button and owner's "UPDATE" button %>
         <div class="total-book-section">
           <div class="total-price">
             <h6 class="h6-bold">Total</h6>
             <p class="p-bold">€<%= @van.price * @num_days%></p>
           </div>
-            <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.nil?%>
-              <%= link_to "Update", edit_van_path(@van) %>
-              <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
-            <% elsif @van.user != current_user %>
-              <%= f.submit "Book now", class: "btn-book" %>
-            <% else %>
-            <h6>You can't delete or update your van right now. You have some bookings oncoming! </h6>
-            <% end %>
-            <% end %>
+          <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.nil?%>
+            <%= link_to "Update", edit_van_path(@van) %>
+            <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
+          <% elsif @van.user != current_user %>
+            <%= f.submit "Book now", class: "btn btn-book" %>
+          <% else %>
+          <h6>You can't delete or update your van right now. You have some bookings oncoming! </h6>
+          <% end %>
+          <% end %>
         </div>
+
       </div>
     </div>
+
+<%# Van Title and Description %>
     <div class="row row-bottom justify-content-between">
       <div class="van-details col-7">
         <h1><%= @van.title %></h1>
         <p><%= @van.description%></p>
       </div>
+
+<%# Owner Inforamtion's Card %>
       <div class="owner-info col-4">
-        <h6 class="h6-bold">Owner details</h6>
+        <div class="text-inside">
+          <h6 class="h6-bold">Vannner</h6>
+          <h6><%= @van.user.first_name %> <%= @van.user.last_name %></h6>
+          <p><%= @van.user.email %></p>
+        </div>
         <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
-        <h6><%= @van.user.first_name %> <%= @van.user.last_name %></h6>
-        <p><%= @van.user.email %></p>
-        <%# <h6>John the Puppy</h6>
-        <p>@johnthepuppy</p> %>
+
       </div>
     </div>
   </div>
