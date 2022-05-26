@@ -20,13 +20,18 @@
           <li class="nav-item">
             <%= link_to "All vans", vans_path, class:"nav-link"%>
           </li>
-          <li class="nav-item dropdown">
             <% if user_signed_in? %>
+              <li class="nav-item dropdown">
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://i.pinimg.com/736x/2d/3a/7e/2d3a7e1af3677a819a4d3c8d7a9b7bba.jpg" />
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
+            <% end %>
+            <% unless user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "Log in", new_user_session_path, class:"nav-link" %>
+                </li>
             <% end %>
           </li>
           <!--li class="nav-item"-->

@@ -1,6 +1,7 @@
 require 'date'
 
 class VansController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     if params[:query].present?
       @vans = policy_scope(Van).near(params[:query],10)
