@@ -4,13 +4,16 @@ class VansController < ApplicationController
   skip_before_action :authenticate_user!
   def index
     if params[:query].present?
-      @vans = policy_scope(Van).near(params[:query],10)
+      @vans = policy_scope(Van).near(params[:query],10).geocoded
     else
       @vans = policy_scope(Van)
     end
     @date_from = params[:date_from]
     @date_to = params[:date_to]
-    @markers = @vans.geocoded.map do |van|
+    if @date_from.present? && @date_to.present?
+      @vans = @vans.select { |v| v.available?(@date_from, @date_to) } 
+    end
+    @markers = @vans.map do |van|
       {
         lat: van.latitude,
         lng: van.longitude,

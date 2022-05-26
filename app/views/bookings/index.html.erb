@@ -23,16 +23,23 @@
               <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
             </div>
             <div class="van-info">
-              <%=booking.van.title%>
+              <h4><%=booking.van.title%></h4>
               <br>
               <%= truncate(booking.van.description, :length =>  50) %>
             </div>
           </div>
           <div class="booking-user-card">
             <h6>Owner Details</h6>
-            <%= booking.van.user.first_name%>
+            <p><%= booking.van.user.first_name%><p>
             <br>
             <%=booking.user.email%>
+          </div>
+          <div class="booking-dates-card">
+            <h6>Booking Dates</h6>
+            <p class="label-small">from</p>
+            <p><%=booking.date_from%></p>
+            <p class="label-small">to</p>
+            <%=booking.date_until%>
           </div>
           <div class="booking-status-card">
             <h6>Status</h6>

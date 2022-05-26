@@ -3,17 +3,17 @@
     <h1>Browse vans</h1>
   </div>
 
-  <div class="search-box">
+  <div>
     <%= form_tag vans_path, method: :get, class: "search-box" do %>
-      <div class="search-from">
+      <div class="sb search-from">
         <h2>from</h2>
         <input name="date_from", class="ymd", type="date", value=<%= @date_from %>>
       </div>
-      <div class="search-to">
+      <div class="sb search-to">
         <h2>to</h2>
         <input name="date_to", class="ymd", type="date", value=<%= @date_to %>>
       </div>
-      <div class="search-city">
+      <div class="sb search-city">
         <h2>city</h2>
         <%= text_field_tag :query,
           params[:query],
