@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :vans, except: [ :destroy] do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show] do
+    patch "accept", to: "bookings#accept"
+    patch "reject", to: "bookings#reject"
+  end
   get 'booking/confirmation', to: 'bookings#confirmation', as: "confirm_booking"
 end

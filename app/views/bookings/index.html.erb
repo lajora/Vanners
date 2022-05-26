@@ -6,33 +6,43 @@
 
   <div class="bookings">
     <div class="booking-cards">
-    <% @bookings.each do |booking| %>
-      <%= link_to booking_path(booking) do %>
+      <% @bookings.each do |booking| %>
         <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
-          <div class="booking-van-card d-flex">
-            <div class="van-photo mr-3">
-              <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
+          <%= link_to booking_path(booking) do %>
+            <div class="d-flex" style="margin-left:35px">
+              <div class="booking-van-card d-flex">
+                <div class="van-photo mr-3">
+                  <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
+                </div>
+                <div class="van-info">
+                  <%=booking.van.title%>
+                  <br>
+                  <%= truncate(booking.van.description, :length =>  50) %>
+                </div>
+              </div>
+              <div class="booking-user-card">
+                <h6>User Details</h6>
+                <%=booking.user.first_name%>
+                <br>
+                <%=booking.user.email%>
+              </div>
             </div>
-            <div class="van-info">
-              <%=booking.van.title%>
-              <br>
-              <%= truncate(booking.van.description, :length =>  50) %>
-            </div>
-          </div>
-          <div class="booking-user-card">
-            <h6>User Details</h6>
-            <%=booking.user.first_name%>
-            <br>
-            <%=booking.user.email%>
-          </div>
+          <% end %>
           <div class="booking-status-card">
             <h6>Status</h6>
             <br>
-            <%=booking.status%>
+            <% if booking.status == "pending" %>
+              <div class="bottons-container">
+                <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(booking), method: :patch%></button>
+                <br>
+                <button class="btn-red"><%= link_to "Reject", booking_reject_path(booking), method: :patch%></button>
+              </div>
+            <% else %>
+              <%=booking.status%>
+            <% end %>
           </div>
         </div>
       <% end %>
-    <% end %>
     </div>
   </div>
 </div>
