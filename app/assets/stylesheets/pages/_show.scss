@@ -28,7 +28,7 @@
   }
   p {
     font-weight: lighter;
-    font-size: 14px;
+    font-size: 20px;
     margin: 10px;
     color: $light-black;
     text-align: justify;
@@ -47,6 +47,9 @@
   height: 100%;
   padding: 0px;
   color: $light-black;
+  border-radius: 15px;
+  padding: 5px;
+  border: solid $blue 7px;
   h6 {
     font-style: italic;
   }
@@ -57,7 +60,7 @@
   height: 350px;
   border: 1.5px solid $light-pink;
   h4 {
-    border-bottom: solid 5px #fbb03c;
+    border-bottom: solid 5px $blue;
     font-size: 2.5rem;
     display: inline-block;
   }
@@ -86,12 +89,32 @@
 }
 
 .owner-info {
+  position: relative;
   color: $light-black;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 20px rgba(251, 176, 60, 0.7);
+  border-radius: 15px;
+  padding: 5px;
+  border: solid $yellow 2px;
+  height: 250px;
   .avatar-owner{
     margin: 20px 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+    width: 120px;
+    height: 120px;
   }
   .h6-bold{
-    padding-top: 20px;
+    font-size: 1.2rem;
+    font-style: italic;
+    border-bottom: solid 5px $yellow;
+    display: inline-block;
+  }
+  h6, p {
+    font-size: 1.5rem;
+  }
+  .text-inside {
+    padding: 30px;
+    margin-top: 20px;
   }
 }
