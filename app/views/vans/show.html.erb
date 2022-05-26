@@ -9,9 +9,9 @@
       <div class="booking-details col-4">
         <div class="payment-info">
           <h4>Rental details</h6>
+          <%= simple_form_for [ @van, @booking ] do |f| %>
           <div class="booking-section">
             <h6>Pick-up date</h6>
-            <%= simple_form_for [ @van, @booking ] do |f| %>
               <%= f.input :date_from, label: false, default:@date_from%>
           </div>
           <div class="booking-section">
@@ -22,7 +22,6 @@
             <h6>Daily rate</h6>
             <div class="total-price">
               <p> <%= @num_days %> days @ €<%= @van.price %></p>
-              <p class="p-bold">€<%= @van.price * @num_days %></p>
             </div>
           </div>
         </div>
@@ -53,8 +52,6 @@
         <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
         <h6><%= @van.user.first_name %> <%= @van.user.last_name %></h6>
         <p><%= @van.user.email %></p>
-        <%# <h6>John the Puppy</h6>
-        <p>@johnthepuppy</p> %>
       </div>
     </div>
   </div>
