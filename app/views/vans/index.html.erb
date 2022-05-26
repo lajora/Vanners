@@ -38,6 +38,7 @@
         <% else %>
           <% @vans.each do |van| %>
             <%= link_to van_path(van, date_from: @date_from, date_to: @date_to) do %>
+
               <div class="van-card">
                 <div class="i">
                   <% if van.photo.key %>
@@ -53,15 +54,17 @@
                   </div>
                   <div class="card-bottom-info">
                     <h6><%= van.address %></h6>
-                    <h4 class="card-price">€<%= van.price %></h4> 
+                    <h4 class="card-price">€<%= van.price %></h4>
                   </div>
                 </div>
               </div>
+
             <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
+
     <div data-toggle-view-target="map" class="map-area invisible">
       <%= render "shared/map" %>
     </div>
