@@ -21,9 +21,9 @@ class VansController < ApplicationController
 
   def show
     @van = Van.find(params[:id])
-    @date_from = Date.strptime(params[:date_from], '%Y-%m-%d')
-    @date_to = Date.strptime(params[:date_to], '%Y-%m-%d')
-    @num_days = (@date_to - @date_from).to_i
+    @date_from = params[:date_from].present? ? Date.strptime(params[:date_from], '%Y-%m-%d') : Date.today()
+    @date_to = params[:date_to].present? ?  Date.strptime(params[:date_to], '%Y-%m-%d') : @date_from + 7
+    @num_days = (@date_to - @date_from).to_i 
     authorize @van
     @booking = Booking.new
     authorize @booking

@@ -7,11 +7,11 @@
     <%= form_tag vans_path, method: :get, class: "search-box" do %>
       <div class="search-from">
         <h2>from</h2>
-        <input name="date_from", class="ymd" type="date", value=<%= @date_from %>>
+        <input name="date_from", class="ymd", type="date", value=<%= @date_from %>>
       </div>
       <div class="search-to">
         <h2>to</h2>
-        <input name="date_to", class="ymd" type="date", value=<%= @date_to %>>
+        <input name="date_to", class="ymd", type="date", value=<%= @date_to %>>
       </div>
       <div class="search-city">
         <h2>city</h2>
@@ -33,14 +33,18 @@
 
     <div data-toggle-view-target="cards">
       <div class="cards">
-        <% @vans.each do |van| %>
-          <%= link_to van_path(van, date_from: @date_from, date_to: @date_to) do %>
-            <div class="van-card">
-              <div class="i"><%= image_tag "van1.jpg"%></div>
-              <h4><%= van.title %> - €<%= van.price %> </h4>
-              <p><%= truncate(van.description, :length => 70) %> </p>
-              <br>
-            </div>
+        <% if @vans.empty? %>
+          <p><em>There are no vans available for your search</em></p>
+        <% else %>
+          <% @vans.each do |van| %>
+            <%= link_to van_path(van, date_from: @date_from, date_to: @date_to) do %>
+              <div class="van-card">
+                <div class="i"><%= image_tag "van1.jpg"%></div>
+                <h4><%= van.title %> - €<%= van.price %> </h4>
+                <p><%= truncate(van.description, :length => 70) %> </p>
+                <br>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
