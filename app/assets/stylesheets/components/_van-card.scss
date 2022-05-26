@@ -18,24 +18,42 @@
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
   height: 450px;
-  p {
-    display: block;
-    margin: 0;
-    padding: 10px;
-    font-style: italic;
-  }
-  img {
+  .img-index-card {
     width: 100%;
     border-radius: 10px 10px 0 0;
+    height: 175px;
+    object-fit: cover;
+    object-position: center;
   }
-  h4 {
-    font-weight: bold;
-    padding: 10px;
-    height: 80px;
+  &:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
   }
 }
+.card-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  justify-content: space-between;
+  }
+  .card-top-info{
+    .card-description {
+      display: block;
+      margin: 0;
+      font-style: italic;
+    }
+    .card-title {
+      font-weight: bold;
+      height: 80px;
+    }
+  }
 
-.van-card:hover {
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-  transform: scale(1.01);
+.card-bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .card-price {
+    font-weight: bold;
+  }
 }
