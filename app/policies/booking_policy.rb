@@ -2,13 +2,13 @@ class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     attr_reader :user, :scope
     # NOTE: Be explicit about which records you allow access to!
-    def initialize(user, scope)
-      @user  = user
-      @scope = scope
-    end
+    # def initialize(user, scope)
+    #   @user  = user
+    #   @scope = scope
+    # end
 
     def resolve
-      @scope.where(user: @user)
+      scope.where(user: user)
     end
   end
 
