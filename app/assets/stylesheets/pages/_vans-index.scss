@@ -31,6 +31,13 @@
   .sb {
     display: flex;
   }
+  .search-city{
+    display: flex;
+    ::placeholder{
+      color: black;
+      opacity: 1;
+    }
+  }
   .ymd {
     box-shadow : none;
     border: none;
@@ -43,8 +50,15 @@
 
 .map-area {
   margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .hidden {
-  display: none;
+  display:none;
 }

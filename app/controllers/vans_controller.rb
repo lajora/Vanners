@@ -1,7 +1,19 @@
+require 'date'
+
 class VansController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
-    @vans = policy_scope(Van)
-    @markers = @vans.geocoded.map do |van|
+    if params[:query].present?
+      @vans = policy_scope(Van).near(params[:query],10).geocoded
+    else
+      @vans = policy_scope(Van)
+    end
+    @date_from = params[:date_from]
+    @date_to = params[:date_to]
+    if @date_from.present? && @date_to.present?
+      @vans = @vans.select { |v| v.available?(@date_from, @date_to) } 
+    end
+    @markers = @vans.map do |van|
       {
         lat: van.latitude,
         lng: van.longitude,
@@ -13,6 +25,9 @@ class VansController < ApplicationController
 
   def show
     @van = Van.find(params[:id])
+    @date_from = params[:date_from].present? ? Date.strptime(params[:date_from], '%Y-%m-%d') : Date.today()
+    @date_to = params[:date_to].present? ?  Date.strptime(params[:date_to], '%Y-%m-%d') : @date_from + 7
+    @num_days = (@date_to - @date_from).to_i 
     authorize @van
     @booking = Booking.new
     authorize @booking

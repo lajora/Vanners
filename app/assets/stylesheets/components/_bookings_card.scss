@@ -22,7 +22,8 @@
   }
 
 .van-info {
-  padding: 5px;
+  padding: 35px;
+  width: 500px;
 }
 
 .booking-van-card{
@@ -32,4 +33,9 @@
 a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
+}
+
+.label-small {
+  font-weight: 300;
+  font-size: 12px;
 }
