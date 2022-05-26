@@ -39,10 +39,23 @@
           <% @vans.each do |van| %>
             <%= link_to van_path(van, date_from: @date_from, date_to: @date_to) do %>
               <div class="van-card">
-                <div class="i"><%= image_tag "van1.jpg"%></div>
-                <h4><%= van.title %> - €<%= van.price %> </h4>
-                <p><%= truncate(van.description, :length => 70) %> </p>
-                <br>
+                <div class="i">
+                  <% if van.photo.key %>
+                    <%= cl_image_tag van.photo.key, class:"img-index-card"%>
+                  <% else %>
+                    <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class:"img-index-card" %>
+                  <% end %>
+                </div>
+                <div class="card-info">
+                  <div class="card-top-info">
+                    <h4 class="card-title"><%= van.title %> </h4>
+                    <p class="card-description"><%= truncate(van.description, :length => 75) %> </p>
+                  </div>
+                  <div class="card-bottom-info">
+                    <h6><%= van.address %></h6>
+                    <h4 class="card-price">€<%= van.price %></h4> 
+                  </div>
+                </div>
               </div>
             <% end %>
           <% end %>
