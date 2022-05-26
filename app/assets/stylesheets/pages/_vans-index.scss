@@ -41,8 +41,15 @@
 
 .map-area {
   margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .hidden {
-  display: none;
+  display:none;
 }
