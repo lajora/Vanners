@@ -29,6 +29,13 @@
   .search-from, .search-to {
     display: flex;
   }
+  .search-city{
+    display: flex;
+    ::placeholder{
+      color: black;
+      opacity: 1;
+    }
+  }
   .ymd {
     box-shadow : none;
     border: none;
