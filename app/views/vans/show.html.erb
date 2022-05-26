@@ -8,45 +8,43 @@
       <% end %>
 
 <%# Dates Form %>
-      <div class="booking-details col-4">
-        <div class="payment-info">
-          <h4>Rental details</h6>
-          <div class="booking-section">
-            <h6>Pick-up date</h6>
-            <%= simple_form_for [ @van, @booking ] do |f| %>
-              <%= f.input :date_from, label: false, default:@date_from%>
-          </div>
-          <div class="booking-section">
-            <h6>Drop-off date</h6>
-              <%= f.input :date_until, label: false, default:@date_to%>
-          </div>
-          <div class="booking-section">
-            <h6>Daily rate</h6>
-            <div class="total-price">
-              <p> <%= @num_days %> days @ €<%= @van.price %></p>
-              <p class="p-bold">€<%= @van.price * @num_days %></p>
+        <div class="booking-details col-4">
+        <%= simple_form_for [ @van, @booking ] do |f| %>
+          <div class="payment-info">
+            <h4>Rental details</h6>
+            <div class="booking-section">
+              <h6>Pick-up date</h6>
+                <%= f.input :date_from, label: false, default:@date_from%>
+            </div>
+            <div class="booking-section">
+              <h6>Drop-off date</h6>
+                <%= f.input :date_until, label: false, default:@date_to%>
+            </div>
+            <div class="booking-section">
+              <h6>Daily rate</h6>
+              <div class="total-price">
+                <p> <%= @num_days %> days @ €<%= @van.price %></p>
+              </div>
             </div>
           </div>
-        </div>
 
 <%# Total Price Section, "BOOK" button and owner's "UPDATE" button %>
-        <div class="total-book-section">
-          <div class="total-price">
-            <h6 class="h6-bold">Total</h6>
-            <p class="p-bold">€<%= @van.price * @num_days%></p>
+          <div class="total-book-section">
+            <div class="total-price">
+              <h6 class="h6-bold">Total</h6>
+              <p class="p-bold">€<%= @van.price * @num_days%></p>
+            </div>
+            <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.nil?%>
+              <%= link_to "Update", edit_van_path(@van) %>
+              <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
+            <% elsif @van.user != current_user %>
+              <%= f.submit "Book now", class: "btn btn-book" %>
+            <% else %>
+            <h6>You can't delete or update your van right now. You have some bookings oncoming! </h6>
+            <% end %>
           </div>
-          <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.nil?%>
-            <%= link_to "Update", edit_van_path(@van) %>
-            <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
-          <% elsif @van.user != current_user %>
-            <%= f.submit "Book now", class: "btn btn-book" %>
-          <% else %>
-          <h6>You can't delete or update your van right now. You have some bookings oncoming! </h6>
-          <% end %>
-          <% end %>
         </div>
-
-      </div>
+      <% end %>
     </div>
 
 <%# Van Title and Description %>
@@ -64,7 +62,6 @@
           <p><%= @van.user.email %></p>
         </div>
         <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
-
       </div>
     </div>
   </div>
