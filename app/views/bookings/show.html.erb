@@ -1,2 +1,65 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="container">
+  <div class="van-page">
+    <div class="row justify-content-between">
+      <% if @booking.van.photo.key %>
+        <%= cl_image_tag @booking.van.photo.key, class: "img-main col-7" %>
+      <% else %>
+        <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class: "img-main col-7" %>
+      <% end %>
+      <div class="booking-details col-4">
+        <div class="payment-info">
+          <h4>Rental details</h6>
+          <div class="booking-section">
+            <h6>Pick-up date</h6>
+              <%= @date_from%>
+          </div>
+          <div class="booking-section">
+            <h6>Drop-off date</h6>
+              <%= @date_to%>
+          </div>
+          <div class="booking-section">
+            <h6>Daily rate</h6>
+            <div class="total-price">
+              <p> <%= @num_days %> days @ €<%= @booking.van.price %></p>
+              <p class="p-bold">€<%= @booking.van.price * @num_days %></p>
+            </div>
+          </div>
+        </div>
+        <div class="total-book-section">
+        <% if @owner == 0 %>
+            <% case  @booking.status%>
+            <% when "accepted"%>
+              <p>Congratulations! Your booking has been <b>accepted!</b></p>
+              <b><%= link_to "Browse more vans", vans_path %></b>
+            <% when "rejected"%>
+              <p class="p-bold">We are sorry... The booking has been rejected! but you can check  <%= link_to "other Van's", vans_path %> </p>
+            <br><p><%= @booking.status %></p>
+            <% end %>
+        <% else %>
+            <% if @booking.status == "pending" %>
+            <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(@booking), method: :patch%></button>
+            <button class="btn-red"><%= link_to "Reject", booking_reject_path(@booking), method: :patch%></button>
+            <% else %>
+            <p>This booking has been <%= @booking.status %></p
+            <% end %>
+        <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="row row-bottom justify-content-between">
+      <div class="booking.van-details col-7">
+        <h1><%= @booking.van.title %></h1>
+        <p><%= @booking.van.description%></p>
+      </div>
+      <div class="owner-info col-4">
+        <h6 class="h6-bold">Owner details</h6>
+        <%= image_tag "https://i.pinimg.com/736x/8d/82/9e/8d829ec69df2baeefb562091ed777195--happy-puppy-puppy-love.jpg", class: "avatar avatar-owner" %>
+        <h6><%= @booking.van.user.first_name %> <%= @booking.van.user.last_name %></h6>
+        <p><%= @booking.van.user.email %></p>
+        <%# <h6>John the Puppy</h6>
+        <p>@johnthepuppy</p> %>
+      </div>
+    </div>
+  </div>
+</div>
