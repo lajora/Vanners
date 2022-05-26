@@ -44,8 +44,8 @@ class BookingsController < ApplicationController
   def accept
     @booking = Booking.find(params[:booking_id])
     authorize @booking
-    booking.status = "accepted"
-    booking.save!
+    @booking.status = "accepted"
+    @booking.save!
     redirect_to bookings_path
   end
 
