@@ -26,23 +26,23 @@
           </div>
         </div>
         <div class="total-book-section">
-        <% if @owner == 0 %>
-            <% case  @booking.status%>
-            <% when "accepted"%>
-              <p>Congratulations! Your booking has been <b>accepted!</b></p>
-              <b><%= link_to "Browse more vans", vans_path %></b>
-            <% when "rejected"%>
-              <p class="p-bold">We are sorry... The booking has been rejected! but you can check  <%= link_to "other Van's", vans_path %> </p>
-            <br><p><%= @booking.status %></p>
-            <% end %>
-        <% else %>
-            <% if @booking.status == "pending" %>
-            <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(@booking), method: :patch%></button>
-            <button class="btn-red"><%= link_to "Reject", booking_reject_path(@booking), method: :patch%></button>
-            <% else %>
-            <p>This booking has been <%= @booking.status %></p
-            <% end %>
-        <% end %>
+          <% if @owner == 0 %>
+              <% case  @booking.status%>
+              <% when "accepted"%>
+                <p>Congratulations! Your booking has been <b>accepted!</b></p>
+                <b><%= link_to "Browse more vans", vans_path %></b>
+              <% when "rejected"%>
+                <p class="p-bold">We are sorry... The booking has been rejected! but you can check  <%= link_to "other Van's", vans_path %> </p>
+              <br><p><%= @booking.status %></p>
+              <% end %>
+          <% else %>
+              <% if @booking.status == "pending" %>
+              <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(@booking), method: :patch%></button>
+              <button class="btn-red"><%= link_to "Reject", booking_reject_path(@booking), method: :patch%></button>
+              <% else %>
+              <p>This booking has been <%= @booking.status %></p
+              <% end %>
+          <% end %>
         </div>
       </div>
       </div>

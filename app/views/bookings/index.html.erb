@@ -17,7 +17,7 @@
   <div class="bookings">
     <div class="booking-cards">
     <% @sent_bookings.each do |booking| %>
-      <%= link_to van_path(booking.van) do %>
+      <%= link_to booking_path(booking) do %>
         <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
           <div class="booking-van-card d-flex">
             <div class="van-photo mr-3">
