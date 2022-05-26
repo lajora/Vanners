@@ -24,7 +24,7 @@
       </h1>
     </div>
     <div class="buttons-container">
-      <%= link_to "Browse vans", vans_path, class: "btn btn-toggle-view"%>
+      <%= link_to "Browse vans", vans_path, class: "btn btn-yellow"%>
       <% if policy(Van).create?  %>
       <%= link_to "Upload your van", new_van_path, class: "btn btn-upload" %>
       <% end %>
