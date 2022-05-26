@@ -1,4 +1,4 @@
-.btn-book{
+.btn {
   text-decoration: none;
   text-align: center;
   align-self: center;
@@ -7,21 +7,21 @@
   padding: 10px 40px;
   border-radius: 4px;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 4px;
   color: whitesmoke;
+  border: none;
+  margin: 8px;
+  border-radius: 4px;
 }
 
-.btn-toggle-view{
-  text-decoration: none;
-  text-align: center;
-  align-self: center;
-  width: fit-content;
-  background-color: $dark-yellow;
-  padding: 4px 8px;
-  border-radius: 4px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  color: $light-black;
-  align-self: flex-end;
-  margin-bottom: 4px;
+.btn-book {
+  padding: 10px 30px;
+  font-size: 25px;
+}
+
+.btn-toggle-view {
+  padding: 5px 15px;
+  font-size: 25px;
 }
 
 .btn-primary {

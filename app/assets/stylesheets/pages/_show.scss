@@ -1,5 +1,6 @@
 .van-page{
-  padding: 20px 10px;
+  padding-top: 20px;
+  margin-top: 20px;
   .img-main {
     border-radius: 4px;
     height: 500px;
@@ -37,18 +38,29 @@
 .total-price{
   display: flex;
   justify-content: space-between;
+  h6, p {
+    font-size: 1.2rem;
+  }
 }
 
 .booking-details {
   height: 100%;
   padding: 0px;
   color: $light-black;
+  h6 {
+    font-style: italic;
+  }
 }
 
 .payment-info {
   text-align: center;
   height: 350px;
   border: 1.5px solid $light-pink;
+  h4 {
+    border-bottom: solid 5px #fbb03c;
+    font-size: 2.5rem;
+    display: inline-block;
+  }
 }
 
 .total-book-section {
@@ -58,6 +70,7 @@
   height: 150px;
   justify-content: center;
   padding: 40px 10px;
+  margin-top: 20px;
 }
 
 .booking-section {
@@ -65,6 +78,10 @@
   margin: 40px 10px;
   p {
     font-weight: lighter;
+  }
+  .days-count {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

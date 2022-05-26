@@ -1,9 +1,4 @@
 <div class="container">
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
   <div class="header">
     <h1>Browse vans</h1>
   </div>
@@ -23,26 +18,10 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-  <h3>Available vans</h3>
-
-    <div class="cards">
-      <% @vans.each do |van| %>
-        <%= link_to van_path(van) do %>
-          <div class="van-card">
-            <%= image_tag "van1.jpg"%>
-            <h4><%= van.title %> - €<%= van.price %> </h4>
-            <p><%= truncate(van.description, :length => 70) %> </p>
-            <br>
-          </div>
-        <% end %>
-      <% end %>
-=======
   <div data-controller="toggle-view">
     <div class="d-flex justify-content-between align-items-end">
       <h3>Available vans</h3>
-      <button class="btn-toggle-view" data-action="click->toggle-view#switchView" data-toggle-view-target="button">Map view</button>
->>>>>>> master
+        <button class="btn btn-toggle-view" data-action="click->toggle-view#switchView" data-toggle-view-target="button">Map view</button>
     </div>
 
     <div data-toggle-view-target="cards">
