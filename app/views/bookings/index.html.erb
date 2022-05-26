@@ -3,6 +3,7 @@
   <div class="header text-center" >
     <h1>Your Upcoming Bookings</h1>
   </div>
+
   <% if @sent_bookings && @sent_bookings.length > 1 %>
     <div class="header text-center" >
       <h2>Meeting new vans soon!</h2>
@@ -12,6 +13,7 @@
       <h2>You will be meeting a new van soon!</h2>
     </div>
   <% end %>
+
   <div class="bookings">
     <div class="booking-cards">
     <% @sent_bookings.each do |booking| %>
@@ -24,15 +26,16 @@
             <div class="van-info">
               <h4><%=booking.van.title%></h4>
               <br>
-              <%= truncate(booking.van.description, :length =>  50) %>
+              <%= truncate(booking.van.description, :length =>  100) %>
             </div>
           </div>
+
           <div class="booking-user-card">
             <h6>User Details</h6>
-            <p><%=booking.user.first_name%></p>
-            <br>
-            <%=booking.user.email%>
+            <p>Name: <%=booking.user.first_name%></p>
+            <p>Email: <%=booking.user.email%></p>
           </div>
+
           <div class="booking-dates-card">
             <h6>Booking Dates</h6>
             <p class="label-small">from</p>
@@ -40,11 +43,13 @@
             <p class="label-small">to</p>
             <%=booking.date_until%>
           </div>
+
           <div class="booking-status-card">
             <h6>Status</h6>
             <br>
-            <%=booking.status%>
+            <h5><%=booking.status.capitalize%></h5>
           </div>
+
         </div>
       <% end %>
     <% end %>
