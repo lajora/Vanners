@@ -1,35 +1,52 @@
 <div class="container">
-
   <div class="header">
     <h1>Browse vans</h1>
   </div>
 
-
   <div class="search-box">
-    <div class="search-from">
-      <h2>from</h2>
-      <input class="ymd" type="date">
-    </div>
-    <div class="search-to">
-      <h2>to</h2>
-      <input class="ymd" type="date">
-    </div>
+    <%= form_tag vans_path, method: :get, class: "search-box" do %>
+      <div class="search-from">
+        <h2>from</h2>
+        <input name="date_from", class="ymd" type="date", value=<%= @date_from %>>
+      </div>
+      <div class="search-to">
+        <h2>to</h2>
+        <input name="date_to", class="ymd" type="date", value=<%= @date_to %>>
+      </div>
+      <div class="search-city">
+        <h2>city</h2>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "ymd",
+          placeholder: "My location"
+        %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-book" %>
+    <% end %>
   </div>
 
-  <h3>Available vans</h3>
-
-
-    <div class="cards">
-      <% @vans.each do |van| %>
-        <%= link_to van_path(van) do %>
-          <div class="van-card">
-            <div class="i"><%= image_tag "van1.jpg"%></div>
-            <h4><%= van.title %> - €<%= van.price %> </h4>
-            <p><%= truncate(van.description, :length => 70) %> </p>
-            <br>
-          </div>
-        <% end %>
-      <% end %>
+  <div data-controller="toggle-view">
+    <div class="d-flex justify-content-between align-items-end">
+      <h3>Available vans</h3>
+      <button class="btn btn-toggle-view" data-action="click->toggle-view#switchView" data-toggle-view-target="button">Map view</button>
     </div>
 
+    <div data-toggle-view-target="cards">
+      <div class="cards">
+        <% @vans.each do |van| %>
+          <%= link_to van_path(van, date_from: @date_from, date_to: @date_to) do %>
+            <div class="van-card">
+              <div class="i"><%= image_tag "van1.jpg"%></div>
+              <h4><%= van.title %> - €<%= van.price %> </h4>
+              <p><%= truncate(van.description, :length => 70) %> </p>
+              <br>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div data-toggle-view-target="map" class="map-area invisible">
+      <%= render "shared/map" %>
+    </div>
+  </div>
 </div>

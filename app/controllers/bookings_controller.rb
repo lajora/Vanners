@@ -1,15 +1,21 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking).order(:created_at)
+    @sent_bookings = current_user.bookings
+    @received_bookings = current_user.received_bookings
   end
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
+    # redirect_to van_path(@booking.van_id)
   end
 
   def create
     @van = Van.find(params[:van_id])
+    authorize @van
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.van = @van
     @booking.user = current_user
     @booking.status = "pending"
@@ -41,5 +47,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:date_from, :date_until)
+  end
+
+  def mybookings
+    Booking.where(user_id: current_user.id)
   end
 end
