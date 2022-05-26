@@ -36,9 +36,9 @@
             <br><p><%= @booking.status %></p>
             <% end %>
         <% else %>
-            <% if @booking.status == "pendent" %>
-            <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(booking), method: :patch%></button>
-            <button class="btn-red"><%= link_to "Reject", booking_reject_path(booking), method: :patch%></button>
+            <% if @booking.status == "pending" %>
+            <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(@booking), method: :patch%></button>
+            <button class="btn-red"><%= link_to "Reject", booking_reject_path(@booking), method: :patch%></button>
             <% else %>
             <p>This booking has been <%= @booking.status %></p
             <% end %>
