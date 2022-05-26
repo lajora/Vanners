@@ -5,12 +5,11 @@
   </div>
 
   <% if @sent_bookings && @sent_bookings.length > 1 %>
-    <div class="header text-center" >
+    <div class="header text-center subheader" >
       <h2>Meeting new vans soon!</h2>
     </div>
-  <% end %>
-  <% unless @sent_bookings.length < 1 %>
-      <div class="header text-center" >
+  <% elsif @sent_bookings.length < 1 %>
+      <div class="header text-center subheader" >
       <h2>You will be meeting a new van soon!</h2>
     </div>
   <% end %>
@@ -38,8 +37,10 @@
           <div class="booking-user-card">
 
             <h6>Owner Details</h6>
-            <p>Name: <%= booking.van.user.first_name%></p>
-            <p>Email: <%= booking.user.email%></p>
+            <p class="label-small">name</p>
+            <p><%= booking.van.user.first_name%></p>
+            <p class="label-small">email</p>
+            <p><%= booking.user.email%></p>
 
           </div>
 
@@ -54,7 +55,12 @@
           <div class="booking-status-card">
             <h6>Status</h6>
             <br>
-            <h5><%=booking.status.capitalize%></h5>
+            <h5
+            <% if booking.status == 'pending'%>class="status-blue"
+            <% elsif booking.status == 'accepted'%>class="status-yellow"
+            <% else %>class="status-red"
+            <% end %>
+            ><%=booking.status.capitalize%></h5>
           </div>
 
         </div>

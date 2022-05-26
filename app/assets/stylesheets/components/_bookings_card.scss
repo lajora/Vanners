@@ -46,7 +46,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .booking-user-card {
-  margin: auto;
+  margin: 17px 10px;
   width: 20%;
   p {
     margin: 0;
@@ -54,7 +54,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .booking-dates-card {
-  margin: auto 10px;
+  margin: 17px 10px;
   width: 20%;
 
   p {
@@ -64,18 +64,26 @@ a, a:hover, a:focus, a:active {
 
 .booking-status-card {
   text-align: center;
-  margin: auto;
+  margin: 17px 10px;
   width: 10%;
   p {
     margin: 0;
   }
   h5 {
-    background-color: $red;
     opacity:0.6;
     padding: 4px 8px;
     border-radius: 5px;
   }
   h5:hover {
     opacity:1;
+  }
+  .status-red{
+    background-color: $red;
+  }
+  .status-yellow{
+    background-color: $yellow;
+  }
+  .status-blue{
+    background-color: $blue;
   }
 }
