@@ -3,12 +3,24 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(:created_at)
     @sent_bookings = current_user.bookings
     @received_bookings = current_user.received_bookings
+    @owner = 0
+    current_user.vans.each do |van|
+      @bookings.each do |booking|
+      @owner += 1 if booking.van == van
+      end
+    end
   end
 
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
-    # redirect_to van_path(@booking.van_id)
+    @owner = 0
+    current_user.vans.each do |van|
+      @owner += 1 if @booking.van == van
+    end
+    @date_from = params[:date_from].present? ? Date.strptime(params[:date_from], '%Y-%m-%d') : Date.today()
+    @date_to = params[:date_to].present? ? Date.strptime(params[:date_to], '%Y-%m-%d') : @date_from + 7
+    @num_days = (@date_to - @date_from).to_i
   end
 
   def create
@@ -30,14 +42,16 @@ class BookingsController < ApplicationController
   end
 
   def accept
-    booking = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
     booking.status = "accepted"
     booking.save!
     redirect_to bookings_path
   end
 
   def reject
-    booking = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
     booking.status = "rejected"
     booking.save!
     redirect_to bookings_path
@@ -51,5 +65,10 @@ class BookingsController < ApplicationController
 
   def mybookings
     Booking.where(user_id: current_user.id)
+  end
+
+  def is_owner?
+    owner = 0
+    return true if owner != 0
   end
 end

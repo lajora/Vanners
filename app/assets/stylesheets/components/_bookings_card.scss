@@ -4,26 +4,31 @@
 }
 
 .booking-list {
-  border: solid 2px #F2E9E2;
-  border-radius: 8px;
-  margin: 8px;
+  border: solid 5px $blue;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .booking-list:hover{
-  background-color: #F2E9E2;
+  background-color: $soft;
 }
 
 .van-photo {
   width: 200px;
   img {
     width: 100%;
-    border-radius: 5%;
+    padding: 10px;
   }
-  }
+}
 
 .van-info {
-  padding: 35px;
+  padding: 10px;
   width: 500px;
+  h4 {
+    border-bottom: solid 5px $yellow;
+    display: inline-block;
+    font-weight: bold;
+  }
 }
 
 .booking-van-card{
@@ -33,4 +38,44 @@
 a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
+}
+
+.label-small {
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.booking-user-card {
+  margin: auto;
+  width: 20%;
+  p {
+    margin: 0;
+  }
+}
+
+.booking-dates-card {
+  margin: auto 10px;
+  width: 20%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.booking-status-card {
+  text-align: center;
+  margin: auto;
+  width: 10%;
+  p {
+    margin: 0;
+  }
+  h5 {
+    background-color: $red;
+    opacity:0.6;
+    padding: 4px 8px;
+    border-radius: 5px;
+  }
+  h5:hover {
+    opacity:1;
+  }
 }

@@ -1,5 +1,6 @@
 .van-page{
-  padding: 20px 10px;
+  padding-top: 20px;
+  margin-top: 20px;
   .img-main {
     border-radius: 4px;
     height: 500px;
@@ -27,7 +28,7 @@
   }
   p {
     font-weight: lighter;
-    font-size: 14px;
+    font-size: 20px;
     margin: 10px;
     color: $light-black;
     text-align: justify;
@@ -37,18 +38,32 @@
 .total-price{
   display: flex;
   justify-content: space-between;
+  h6, p {
+    font-size: 1.2rem;
+  }
 }
 
 .booking-details {
   height: 100%;
   padding: 0px;
   color: $light-black;
+  border-radius: 15px;
+  padding: 5px;
+  border: solid $blue 7px;
+  h6 {
+    font-style: italic;
+  }
 }
 
 .payment-info {
   text-align: center;
   height: 350px;
   border: 1.5px solid $light-pink;
+  h4 {
+    border-bottom: solid 5px $blue;
+    font-size: 2.5rem;
+    display: inline-block;
+  }
 }
 
 .total-book-section {
@@ -58,23 +73,48 @@
   height: 150px;
   justify-content: center;
   padding: 40px 10px;
+  margin-top: 20px;
 }
 
 .booking-section {
   text-align: left;
-  margin: 40px 10px;
+  margin: 30px 10px;
   p {
     font-weight: lighter;
+  }
+  .days-count {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 .owner-info {
+  position: relative;
   color: $light-black;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 20px rgba(251, 176, 60, 0.7);
+  border-radius: 15px;
+  padding: 5px;
+  border: solid $yellow 2px;
+  height: 250px;
   .avatar-owner{
     margin: 20px 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+    width: 120px;
+    height: 120px;
   }
   .h6-bold{
-    padding-top: 20px;
+    font-size: 1.2rem;
+    font-style: italic;
+    border-bottom: solid 5px $yellow;
+    display: inline-block;
+  }
+  h6, p {
+    font-size: 1.5rem;
+  }
+  .text-inside {
+    padding: 30px;
+    margin-top: 20px;
   }
 }

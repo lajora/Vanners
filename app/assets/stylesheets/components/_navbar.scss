@@ -13,3 +13,10 @@
 .navbar-lewagon .navbar-brand img {
   width: 180px;
 }
+
+.nav-link {
+  transition: 1s all ease;
+  &:hover {
+    text-decoration: underline $yellow 5px;
+  }
+}

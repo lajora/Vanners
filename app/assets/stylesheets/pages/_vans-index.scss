@@ -1,11 +1,13 @@
 .container {
   width: 90%;
   margin: 0 auto;
+  text-align: left;
   h3 {
     letter-spacing: -1px;
     padding-top: 20px;
     text-decoration: underline solid $yellow 5px;
-    font-style: italic;
+    font-size: 2rem;
+    text-align: center;
   }
 }
 
@@ -23,10 +25,10 @@
 .search-box {
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px;
-  .search-from, .search-to {
+  padding: 30px;
+  .sb {
     display: flex;
   }
   .search-city{
@@ -44,13 +46,16 @@
     font-style: italic;
     margin: 0 30px;
   }
+  h2 {
+    margin: auto;
+  }
 }
 
 .map-area {
   margin-top: 20px;
   width: 100%;
   padding: 20px;
-  
+
 }
 
 .invisible {

@@ -11,4 +11,9 @@ class Van < ApplicationRecord
   validates :title, :description, :price, presence: true
   validates :description, length: { minimum: 20 }
   validates :address, presence: true
+
+  def available?(from, to)
+    bookings.where('date_from <= ? AND date_until >= ?', to, from).none?
+  end
+
 end
