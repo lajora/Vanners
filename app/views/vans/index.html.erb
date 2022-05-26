@@ -1,10 +1,12 @@
 <div class="container">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
   <div class="header">
     <h1>Browse vans</h1>
   </div>
-
 
   <div class="search-box">
     <div class="sb search-from">
@@ -21,6 +23,7 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <h3>Available vans</h3>
 
     <div class="cards">
@@ -34,6 +37,30 @@
           </div>
         <% end %>
       <% end %>
+=======
+  <div data-controller="toggle-view">
+    <div class="d-flex justify-content-between align-items-end">
+      <h3>Available vans</h3>
+      <button class="btn-toggle-view" data-action="click->toggle-view#switchView" data-toggle-view-target="button">Map view</button>
+>>>>>>> master
     </div>
 
+    <div data-toggle-view-target="cards">
+      <div class="cards">
+        <% @vans.each do |van| %>
+          <%= link_to van_path(van) do %>
+            <div class="van-card">
+              <div class="i"><%= image_tag "van1.jpg"%></div>
+              <h4><%= van.title %> - €<%= van.price %> </h4>
+              <p><%= truncate(van.description, :length => 70) %> </p>
+              <br>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div data-toggle-view-target="map" class="map-area hidden">
+      <%= render "shared/map" %>
+    </div>
+  </div>
 </div>

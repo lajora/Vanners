@@ -5,31 +5,33 @@
   </div>
 
   <div class="bookings">
-    <div class="cards">
+    <div class="booking-cards">
     <% @bookings.each do |booking| %>
-      <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
-        <div class="booking-van-card d-flex">
-          <div class="van-photo mr-3">
-            <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
+      <%= link_to booking_path(booking) do %>
+        <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
+          <div class="booking-van-card d-flex">
+            <div class="van-photo mr-3">
+              <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
+            </div>
+            <div class="van-info">
+              <%=booking.van.title%>
+              <br>
+              <%= truncate(booking.van.description, :length =>  50) %>
+            </div>
           </div>
-          <div class="van-info">
-            <%=booking.van.title%>
+          <div class="booking-user-card">
+            <h6>User Details</h6>
+            <%=booking.user.first_name%>
             <br>
-            <%= truncate(booking.van.description, :length =>  50) %>
+            <%=booking.user.email%>
+          </div>
+          <div class="booking-status-card">
+            <h6>Status</h6>
+            <br>
+            <%=booking.status%>
           </div>
         </div>
-        <div class="booking-user-card">
-          <h6>User Details</h6>
-          <%=booking.user.first_name%>
-          <br>
-          <%=booking.user.email%>
-        </div>
-        <div class="booking-status-card">
-          <h6>Status</h6>
-          <br>
-          <%=booking.status%>
-        </div>
-      </div>
+      <% end %>
     <% end %>
     </div>
   </div>

@@ -1,14 +1,17 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking).order(:created_at)
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def create
     @van = Van.find(params[:van_id])
+    authorize @van
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.van = @van
     @booking.user = current_user
     @booking.status = "pending"

@@ -18,7 +18,7 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' unless @skip_navbar %>
-    <div>
+    <div id="minimum-height">
       <%= yield %>
     </div>
     <%= render 'shared/footer' unless @skip_footer %>
