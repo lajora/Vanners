@@ -1,9 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #f2e9e2;
+  background: #fffcf2;
   position: sticky;
   top: 0;
   z-index: 5;
+  .avatar {
+    margin-left: 10px;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,8 +18,9 @@
 }
 
 .nav-link {
-  transition: 1s all ease;
+  border-bottom: solid 4px transparent;
   &:hover {
-    text-decoration: underline $yellow 5px;
+    border-bottom: solid 4px $red;
+    // text-decoration: underline $yellow 5px;
   }
 }
