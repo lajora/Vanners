@@ -4,17 +4,18 @@
     <h1>Your Upcoming Bookings</h1>
   </div>
 
+<%# Header renting vans %>
   <% if @sent_bookings && @sent_bookings.length > 1 %>
-    <div class="header text-center" >
+    <div class="header text-center subheader" >
       <h2>Meeting new vans soon!</h2>
     </div>
-  <% end %>
-  <% unless @sent_bookings.length < 1 %>
-      <div class="header text-center" >
+  <% elsif @sent_bookings.length < 1 %>
+      <div class="header text-center subheader" >
       <h2>You will be meeting a new van soon!</h2>
     </div>
   <% end %>
 
+<%# Cards renting vans %>
   <div class="bookings">
     <div class="booking-cards">
     <% @sent_bookings.each do |booking| %>
@@ -33,96 +34,116 @@
               <br>
               <%= truncate(booking.van.description, :length =>  100) %>
             </div>
+
+            <div class="booking-user-card">
+
+              <h6>Owner Details</h6>
+              <p class="label-small">name</p>
+              <p><%= booking.van.user.first_name%></p>
+              <p class="label-small">email</p>
+              <p><%= booking.user.email%></p>
+
+            </div>
+
+            <div class="booking-dates-card">
+              <h6>Booking Dates</h6>
+              <p class="label-small">from</p>
+              <p><%=booking.date_from%></p>
+              <p class="label-small">to</p>
+              <%=booking.date_until%>
+            </div>
+
+            <div class="booking-status-card">
+              <h6>Status</h6>
+              <h5
+              <% if booking.status == 'pending'%>class="status-blue"
+              <% elsif booking.status == 'accepted'%>class="status-yellow"
+              <% else %>class="status-red"
+              <% end %>
+              ><%=booking.status.capitalize%></h5>
+            </div>
+
           </div>
-
-          <div class="booking-user-card">
-
-            <h6>Owner Details</h6>
-            <p>Name: <%= booking.van.user.first_name%></p>
-            <p>Email: <%= booking.user.email%></p>
-
-          </div>
-
-          <div class="booking-dates-card">
-            <h6>Booking Dates</h6>
-            <p class="label-small">from</p>
-            <p><%=booking.date_from%></p>
-            <p class="label-small">to</p>
-            <%=booking.date_until%>
-          </div>
-
-          <div class="booking-status-card">
-            <h6>Status</h6>
-            <br>
-            <h5><%=booking.status.capitalize%></h5>
-          </div>
-
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
+
+<%# Header renting out vans %>
   <% if @received_bookings.length == 1%>
     <div class="header text-center" >
       <h2>Where is your van going? </h2>
     </div>
-    <% elsif @received_bookings.length > 1 %>
+  <% elsif @received_bookings.length > 1 %>
+    <div class="header text-center" >
+      <h2>Where will your vans be travelling?</h2>
+    </div>
+  <% elsif @received_bookings.length == 0 %>
+    <%if current_user.vans.length == 0%>
       <div class="header text-center" >
-        <h2>Where will your vans be travelling?</h2>
+        <h4>You haven't uploaded any van yet, if you would like to add one . . .</h4>
+        <%= link_to "Upload your van", new_van_path, class: "btn-primary" %>
       </div>
-    <% elsif @received_bookings.length == 0 %>
-      <%if current_user.vans.length == 0%>
-        <div class="header text-center" >
-          <h4>You haven't uploaded any van yet, if you would like to add one . . .</h4>
-          <%= link_to "Upload your van", new_van_path, class: "btn-primary" %>
-        </div>
-      <% else %>
-        <div class="header text-center" >
-          <h2>Your van isn't leaving you (yet)</h2>
-        </div>
-        <% end %>
-    <% end %>
+    <% else %>
+      <div class="header text-center" >
+        <h2>Your van isn't leaving you (yet)</h2>
+      </div>
+      <% end %>
+  <% end %>
+
+<%# Cards renting out vans %>
   <div class="bookings">
     <div class="booking-cards">
-    <% @received_bookings.each do |booking| %>
-      <%= link_to booking_path(booking) do %>
-        <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
-          <%= link_to booking_path(booking) do %>
-            <div class="d-flex" style="margin-left:35px">
-              <div class="booking-van-card d-flex">
-                <div class="van-photo mr-3">
-                  <img src="https://i.ytimg.com/vi/l0wJatMVrQ0/maxresdefault.jpg" alt="" >
-                </div>
-                <div class="van-info">
-                  <%=booking.van.title%>
-                  <br>
-                  <%= truncate(booking.van.description, :length =>  50) %>
-                </div>
+      <% @received_bookings.each do |booking| %>
+        <%= link_to booking_path(booking) do %>
+          <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
+            <div class="booking-van-card d-flex">
+              <div class="van-photo mr-3">
+                <% if booking.van.photo.key %>
+                  <%= cl_image_tag booking.van.photo.key%>
+                <% else %>
+                  <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+                <% end %>
               </div>
-
-                  <div class="booking-user-card">
-                    <h6>Who is gonna drive?</h6>
-                    <%=booking.user.first_name%>
-                    <br>
-                    <%=booking.user.email%>
-                  </div>
-            </div>
-          <% end %>
-          <div class="booking-status-card">
-            <h6>Status</h6>
-            <br>
-            <% if booking.status == "pending" %>
-              <div class="bottons-container">
-                <button class="btn-yellow"><%= link_to "Accept", booking_accept_path(booking), method: :patch%></button>
+              <div class="van-info">
+                <h4><%=booking.van.title%></h4>
                 <br>
-                <button class="btn-red"><%= link_to "Reject", booking_reject_path(booking), method: :patch%></button>
+                <%= truncate(booking.van.description, :length =>  100) %>
               </div>
-            <% else %>
-              <%=booking.status%>
-            <% end %>
+            </div>
+
+            <div class="booking-user-card">
+              <h6>Renter Details</h6>
+              <p class="label-small">name</p>
+              <p><%= booking.user.first_name%></p>
+              <p class="label-small">email</p>
+              <p><%= booking.user.email%></p>
+            </div>
+
+            <div class="booking-dates-card">
+              <h6>Booking Dates</h6>
+              <p class="label-small">from</p>
+              <p><%=booking.date_from%></p>
+              <p class="label-small">to</p>
+              <%=booking.date_until%>
+            </div>
+            <div class="booking-status-card">
+              <h6>Status</h6>
+              <% if booking.status == "pending" %>
+                <div class="bottons-container">
+                  <h5 class='btn-status-yellow'>Accept</h5>
+                  <h5 class='btn-status-red'>Reject</h5>
+                </div>
+              <% else %>
+                <h5
+                <% if booking.status == 'accepted'%>class="status-yellow"
+                <% else %>class="status-red"
+                <% end %>
+                ><%=booking.status.capitalize%></h5>
+              <% end %>
+            </div>
           </div>
-          <% end %>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
