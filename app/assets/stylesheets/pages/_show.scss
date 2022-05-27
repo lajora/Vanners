@@ -95,14 +95,15 @@
   border-radius: 15px;
   padding: 5px;
   border: solid $yellow 2px;
-  height: 250px;
+  height: 230px;
+  margin-bottom: 20px;
   .avatar-owner{
     margin: 20px 10px;
     position: absolute;
     right: 20px;
-    bottom: 40px;
-    width: 120px;
-    height: 120px;
+    bottom: 60px;
+    width: 90px;
+    height: 90px;
   }
   .h6-bold{
     font-size: 1.2rem;
