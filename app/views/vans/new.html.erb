@@ -1,14 +1,15 @@
   <div class="container">
     <div class="row justify-content-center" style="margin-top: 4rem">
       <div class="col-lg-6 col-sm-12">
-        <%= simple_form_for @van do |f| %>
-          <%= f.input :title, hint: 'Be creative!' %>
-          <%= f.input :description, hint: 'Please, provide a detailed description of your Van :)'%>
-          <%= f.input :price %>
-          <%= f.input :address %>
-          <%= f.input :photos, as: :file, :input_html => { multiple: :true } %>
-          <%= f.button :submit, class: 'btn-primary justify-self-center' %>
-        <% end %>
+          <%= simple_form_for @van do |f| %>
+            <%= f.input :title, hint: 'Be creative!' %>
+            <%= f.input :description, hint: 'Please, provide a detailed description of your Van :)'%>
+            <%= f.input :price %>
+            <%= f.input :address, input_html: { data: { geocoder_target: "address" },class: "d-none" },
+                wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+            <%= f.input :photos, as: :file, :input_html => { multiple: :true } %>
+            <%= f.button :submit, class: 'btn-primary justify-self-center' %>
+          <% end %>
       </div>
     </div>
   </div>
