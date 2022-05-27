@@ -41,8 +41,8 @@
 
               <div class="van-card">
                 <div class="i">
-                  <% if van.photo.key %>
-                    <%= cl_image_tag van.photo.key, class:"img-index-card"%>
+                  <% if van.photos.length > 0 %>
+                    <%= cl_image_tag van.photos.first.key, class:"img-index-card"%>
                   <% else %>
                     <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg", class:"img-index-card" %>
                   <% end %>

@@ -22,7 +22,7 @@
         <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
           <div class="booking-van-card d-flex">
             <div class="van-photo mr-3">
-              <% if booking.van.photo.key %>
+              <% if booking.van.photos.length > 0 %>
                 <%= cl_image_tag booking.van.photo.key%>
               <% else %>
                 <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>

@@ -11,7 +11,7 @@ class VansController < ApplicationController
     @date_from = params[:date_from]
     @date_to = params[:date_to]
     if @date_from.present? && @date_to.present?
-      @vans = @vans.select { |v| v.available?(@date_from, @date_to) } 
+      @vans = @vans.select { |v| v.available?(@date_from, @date_to) }
     end
     @markers = @vans.map do |van|
       {
@@ -27,7 +27,7 @@ class VansController < ApplicationController
     @van = Van.find(params[:id])
     @date_from = params[:date_from].present? ? Date.strptime(params[:date_from], '%Y-%m-%d') : Date.today()
     @date_to = params[:date_to].present? ?  Date.strptime(params[:date_to], '%Y-%m-%d') : @date_from + 7
-    @num_days = (@date_to - @date_from).to_i 
+    @num_days = (@date_to - @date_from).to_i
     authorize @van
     @booking = Booking.new
     authorize @booking
@@ -69,6 +69,6 @@ class VansController < ApplicationController
   private
 
   def van_params
-    params.require(:van).permit(:title, :description, :price, :photo, :address)
+    params.require(:van).permit(:title, :description, :price, :address, photos: [])
   end
 end

@@ -3,9 +3,9 @@
 <div class="container">
   <div class="van-page">
     <div class="row justify-content-between">
-      <% if @van.photo.key %>
+      <% if @van.photos.length > 0 %>
         <div data-toggle="modal" data-target="#exampleModal" class="col-7">
-          <%= cl_image_tag @van.photo.key, class: "img-main col-7" %>
+          <%= cl_image_tag @van.photos.first.key, class: "img-main col-7" %>
         </div>
       <% else %>
         <div data-toggle="modal" data-target="#exampleModal" class="col-7">
@@ -41,7 +41,7 @@
               <h6 class="h6-bold">Total</h6>
               <p class="p-bold">€<%= @van.price * @num_days%></p>
             </div>
-            <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.nil?%>
+            <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.length == 0 %>
               <%= link_to "Update", edit_van_path(@van) %>
               <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
             <% elsif @van.user != current_user %>
@@ -75,4 +75,4 @@
 </div>
 
 <!-- Modal -->
-<%= render 'shared/modal_carrousel_vans' %>
+<%= render 'shared/modal_carrousel_vans', van: @van %>
