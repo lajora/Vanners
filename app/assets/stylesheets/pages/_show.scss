@@ -3,7 +3,7 @@
   margin-top: 20px;
   .img-main {
     border-radius: 4px;
-    height: 500px;
+    height: 420px;
     object-fit: cover;
     object-position: center;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
@@ -20,6 +20,7 @@
 .van-details {
   display: flex;
   flex-direction: column;
+  width: 47vw;
   h1 {
     font-weight: 600;
     font-size: 30px;
@@ -28,7 +29,7 @@
   }
   p {
     font-weight: lighter;
-    font-size: 20px;
+    font-size: 14px;
     margin: 10px;
     color: $light-black;
     text-align: justify;
@@ -46,18 +47,23 @@
 .booking-details {
   height: 100%;
   padding: 0px;
+  width: 40%;
   color: $light-black;
   border-radius: 15px;
   padding: 5px;
   border: solid $blue 7px;
   h6 {
+    font-size:0.8rem;
     font-style: italic;
+  }
+  h4{
+    font-size: 1.5rem;
   }
 }
 
 .payment-info {
   text-align: center;
-  height: 350px;
+  height: 280px;
   border: 1.5px solid $light-pink;
   h4 {
     border-bottom: solid 5px $blue;
@@ -70,7 +76,7 @@
   display: flex;
   flex-direction: column;
   border: 1.5px solid $light-pink;
-  height: 150px;
+  height: 100px;
   justify-content: center;
   padding: 40px 10px;
   margin-top: 20px;
@@ -78,7 +84,7 @@
 
 .booking-section {
   text-align: left;
-  margin: 30px 10px;
+  margin: 10px 10px;
   p {
     font-weight: lighter;
   }
@@ -89,6 +95,7 @@
 }
 
 .owner-info {
+  width: 40%;
   position: relative;
   color: $light-black;
   box-shadow: 0px 0px 20px rgba(251, 176, 60, 0.7);
@@ -101,9 +108,9 @@
     margin: 20px 10px;
     position: absolute;
     right: 20px;
-    bottom: 60px;
-    width: 90px;
-    height: 90px;
+    bottom: 125px;
+    width: 60px;
+    height: 60px;
   }
   .h6-bold{
     font-size: 1.2rem;
@@ -112,7 +119,7 @@
     display: inline-block;
   }
   h6, p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .text-inside {
     padding: 30px;
