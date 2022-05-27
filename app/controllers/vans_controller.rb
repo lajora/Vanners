@@ -4,9 +4,9 @@ class VansController < ApplicationController
   skip_before_action :authenticate_user!
   def index
     if params[:query].present?
-      @vans = policy_scope(Van).near(params[:query],10).geocoded
+      @vans = policy_scope(Van).near(params[:query],10).geocoded.order(id: :desc)
     else
-      @vans = policy_scope(Van)
+      @vans = policy_scope(Van).order(id: :desc)
     end
     @date_from = params[:date_from]
     @date_to = params[:date_to]
