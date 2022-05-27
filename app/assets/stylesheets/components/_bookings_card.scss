@@ -77,17 +77,36 @@ a, a:hover, a:focus, a:active {
     opacity:0.6;
     padding: 4px 8px;
     border-radius: 5px;
+    color: whitesmoke;
   }
-  h5:hover {
+  // h5
+  .btn-status-yellow{
     opacity:1;
+    background-color: $yellow;
+    margin-top: 20px;
+    &:hover {
+      opacity:0.6;
+    }
   }
+  .btn-status-red{
+    opacity:1;
+    margin-top: 10px;
+    background-color: $red;
+    &:hover {
+      opacity:0.6;
+    }
+  }
+
   .status-red{
     background-color: $red;
+    margin-top: 40px;
   }
   .status-yellow{
     background-color: $yellow;
+    margin-top: 40px;
   }
   .status-blue{
     background-color: $blue;
+    margin-top: 40px;
   }
 }
