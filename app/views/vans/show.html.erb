@@ -4,7 +4,7 @@
   <div class="van-page">
     <div class="row justify-content-between">
       <% if @van.photos.length > 0 %>
-        <div data-toggle="modal" data-target="#exampleModal" class="col-7">
+        <div data-bs-toggle="modal" data-bs-target="#exampleModal" class="col-7">
           <%= cl_image_tag @van.photos.first.key, class: "img-main col-7" %>
         </div>
       <% else %>
