@@ -5,7 +5,8 @@
     border-radius: 4px;
     height: 500px;
     max-width: 50vw;
-    object-fit: cover;
+    width: 100%;
+    object-fit: contain;
     object-position: center;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
     padding: 0px;
