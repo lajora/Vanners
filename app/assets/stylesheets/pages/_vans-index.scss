@@ -23,9 +23,10 @@
 }
 
 .search-box {
-  display: flex;
+  display: inline-flex;
+  // flex-wrap: no-wrap;
   justify-content: space-around;
-  width: 90%;
+  width: 90vw;
   margin: 0 auto;
   padding: 30px;
   .sb {
@@ -48,6 +49,7 @@
   }
   h2 {
     margin: auto;
+    font-size: 2vw;
   }
 }
 
