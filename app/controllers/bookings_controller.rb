@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = policy_scope(Booking).order(:created_at)
-    @sent_bookings = current_user.bookings
-    @received_bookings = current_user.received_bookings
+    @bookings = policy_scope(Booking).order(id: :desc)
+    @sent_bookings = current_user.bookings.order(id: :desc)
+    @received_bookings = current_user.received_bookings.order(id: :desc)
     @owner = 0
     current_user.vans.each do |van|
       @bookings.each do |booking|
@@ -46,15 +46,15 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.status = "accepted"
     @booking.save!
-    redirect_to bookings_path
+    redirect_to bookings_path(anchor: "booking-#{@booking.id + 1}")
   end
 
   def reject
     @booking = Booking.find(params[:booking_id])
     authorize @booking
-    booking.status = "rejected"
-    booking.save!
-    redirect_to bookings_path
+    @booking.status = "rejected"
+    @booking.save!
+    redirect_to bookings_path(anchor: "booking-#{@booking.id + 1}")
   end
 
   private
