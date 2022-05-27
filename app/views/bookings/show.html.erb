@@ -28,6 +28,8 @@
         <div class="total-book-section">
           <% if @owner == 0 %>
               <% case  @booking.status%>
+              <% when "pending"%>
+                <p>Your booking is still <b>pending</b>. You will receive an email once the status has changed.</p>
               <% when "accepted"%>
                 <p>Congratulations! Your booking has been <b>accepted!</b></p>
                 <b><%= link_to "Browse more vans", vans_path %></b>
