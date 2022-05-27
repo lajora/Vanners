@@ -9,7 +9,7 @@
     <div class="header text-center subheader" >
       <h2>Meeting new vans soon!</h2>
     </div>
-  <% elsif @sent_bookings.length < 1 %>
+  <% elsif @sent_bookings.length == 1  %>
       <div class="header text-center subheader" >
       <h2>You will be meeting a new van soon!</h2>
     </div>
@@ -18,21 +18,23 @@
 <%# Cards renting vans %>
   <div class="bookings">
     <div class="booking-cards">
-    <% @sent_bookings.each do |booking| %>
-      <%= link_to booking_path(booking) do %>
-        <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
-          <div class="booking-van-card d-flex">
-            <div class="van-photo mr-3">
-              <% if booking.van.photos.length > 0 %>
-                <%= cl_image_tag booking.van.photo.key%>
-              <% else %>
-                <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
-              <% end %>
-            </div>
-            <div class="van-info">
-              <h4><%=booking.van.title%></h4>
-              <br>
-              <%= truncate(booking.van.description, :length =>  100) %>
+<<<<<<< HEAD
+      <% @sent_bookings.each do |booking| %>
+        <%= link_to booking_path(booking) do %>
+          <div class="booking-list d-flex" style="justify-content:space-between;padding:25px" id="booking-<%= booking.id %>">
+            <div class="booking-van-card d-flex">
+              <div class="van-photo mr-3">
+                <% if booking.van.photos.length > 0 %>
+                  <%= cl_image_tag booking.van.photo.key%>
+                <% else %>
+                  <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+                <% end %>
+              </div>
+              <div class="van-info">
+                <h4><%=booking.van.title%></h4>
+                <br>
+                <%= truncate(booking.van.description, :length =>  100) %>
+              </div>
             </div>
 
             <div class="booking-user-card">
@@ -41,7 +43,7 @@
               <p class="label-small">name</p>
               <p><%= booking.van.user.first_name%></p>
               <p class="label-small">email</p>
-              <p><%= booking.user.email%></p>
+              <p><%= booking.van.user.email%></p>
 
             </div>
 
@@ -95,50 +97,105 @@
   <div class="bookings">
     <div class="booking-cards">
       <% @received_bookings.each do |booking| %>
-        <%= link_to booking_path(booking) do %>
-          <div class="booking-list d-flex" style="justify-content:space-between;padding:25px">
-            <div class="booking-van-card d-flex">
-              <div class="van-photo mr-3">
-                <% if booking.van.photo.key %>
-                  <%= cl_image_tag booking.van.photo.key%>
-                <% else %>
-                  <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+        <% if booking.status != "pending" %>
+          <%= link_to booking_path(booking) do %>
+            <div class="booking-list d-flex" style="justify-content:space-between;padding:25px" id="booking-<%= booking.id %>">
+              <div class="booking-van-card d-flex">
+                <div class="van-photo mr-3">
+                  <% if booking.van.photos.length > 0 %>
+                    <%= cl_image_tag booking.van.photo.key%>
+                  <% else %>
+                    <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+                  <% end %>
+                </div>
+                <div class="van-info">
+                  <h4><%=booking.van.title%></h4>
+                  <br>
+                  <%= truncate(booking.van.description, :length =>  100) %>
+                </div>
+              </div>
+
+              <div class="booking-user-card">
+
+                <h6>Renter Details</h6>
+                <p class="label-small">name</p>
+                <p><%= booking.user.first_name%></p>
+                <p class="label-small">email</p>
+                <p><%= booking.user.email%></p>
+
+              </div>
+
+              <div class="booking-dates-card">
+                <h6>Booking Dates</h6>
+                <p class="label-small">from</p>
+                <p><%=booking.date_from%></p>
+                <p class="label-small">to</p>
+                <%=booking.date_until%>
+              </div>
+
+              <div class="booking-status-card">
+                <h6>Status</h6>
+                <h5
+                <% if booking.status == 'pending'%>class="status-blue"
+                <% elsif booking.status == 'accepted'%>class="status-yellow"
+                <% else %>class="status-red"
                 <% end %>
-              </div>
-              <div class="van-info">
-                <h4><%=booking.van.title%></h4>
-                <br>
-                <%= truncate(booking.van.description, :length =>  100) %>
+                ><%=booking.status.capitalize%></h5>
               </div>
             </div>
+          <% end %>
+        <% else %>
+          <div class="card-content d-flex">
+            <%= link_to booking_path(booking) do  %>
+              <div class="booking-list d-flex" id="booking-<%= booking.id %>">
+                <div class="booking-list-link d-flex">
+                  <div class="booking-van-card d-flex">
+                    <div class="van-photo mr-3">
+                      <% if booking.van.photos.length > 0 %>
+                        <%= cl_image_tag booking.van.photo.key%>
+                      <% else %>
+                        <%= image_tag "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a1/37/b5.jpg" %>
+                      <% end %>
+                    </div>
+                    <div class="van-info">
+                      <h4><%=booking.van.title%></h4>
+                      <br>
+                      <%= truncate(booking.van.description, :length =>  100) %>
+                    </div>
+                  </div>
 
-            <div class="booking-user-card">
-              <h6>Renter Details</h6>
-              <p class="label-small">name</p>
-              <p><%= booking.user.first_name%></p>
-              <p class="label-small">email</p>
-              <p><%= booking.user.email%></p>
-            </div>
+                  <div class="booking-user-card">
+                    <h6>Renter Details</h6>
+                    <p class="label-small">name</p>
+                    <p><%= booking.user.first_name%></p>
+                    <p class="label-small">email</p>
+                    <p><%= booking.user.email%></p>
+                  </div>
 
-            <div class="booking-dates-card">
-              <h6>Booking Dates</h6>
-              <p class="label-small">from</p>
-              <p><%=booking.date_from%></p>
-              <p class="label-small">to</p>
-              <%=booking.date_until%>
-            </div>
-            <div class="booking-status-card">
+                  <div class="booking-dates-card">
+                    <h6>Booking Dates</h6>
+                    <p class="label-small">from</p>
+                    <p><%=booking.date_from%></p>
+                    <p class="label-small">to</p>
+                    <%=booking.date_until%>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="booking-status-card status-pending">
               <h6>Status</h6>
               <% if booking.status == "pending" %>
-                <div class="bottons-container">
-                  <h5 class='btn-status-yellow'>Accept</h5>
-                  <h5 class='btn-status-red'>Reject</h5>
+                <div class="bottons-container" >
+                  <h5><%= link_to "Accept", booking_accept_path(booking), method: :patch, remote: true, class:'btn-status-yellow'%></h5>
+                  <h5><%= link_to "Reject", booking_reject_path(booking), method: :patch, remote: true, class:'btn-status-red' %></h5>
                 </div>
               <% else %>
                 <h5
-                <% if booking.status == 'accepted'%>class="status-yellow"
-                <% else %>class="status-red"
-                <% end %>
+                  <% if booking.status == 'accepted'%>
+                    class="status-yellow" 
+                  <% else %>
+                    class="status-red"
+                  <% end %>
                 ><%=booking.status.capitalize%></h5>
               <% end %>
             </div>

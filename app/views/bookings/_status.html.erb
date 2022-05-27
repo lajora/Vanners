@@ -1,0 +1,16 @@
+  <h6>Status</h6>
+  <% if booking.status == "pending" %>
+    <div class="bottons-container">
+      <h5 class='btn-status-yellow' data-action="click->update_status#accept">Accept</h5>
+      <h5 class='btn-status-red' data-action="click->update_status#reject">Reject</h5>
+    </div>
+  <% else %>
+    <h5 data-update-status-target="status"
+      <% if booking.status == 'accepted'%>s
+        class="status-yellow" 
+      <% else %>
+        class="status-red"
+      <% end %>
+    ><%=booking.status.capitalize%></h5>
+  <% end %>
+
