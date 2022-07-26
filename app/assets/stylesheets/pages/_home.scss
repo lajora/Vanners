@@ -17,13 +17,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .greeting {
+    font-size: 1.5vw;
+  }
   a {
     text-decoration: none;
     color: $light-black;
-  }
-  h5 {
-    font-size: 1.1vw;
-    margin: 0;
   }
   .vl {
     img{
@@ -93,9 +92,6 @@
   }
 }
 
-h4 {
-  font-size: 1.5vw;
-}
 // @media only screen and (min-device-width: 100px) and (max-device-width: 768px) {
 //   h4, h1, h5 {
 //     font-size: 0.5rem;
