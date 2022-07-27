@@ -1,18 +1,38 @@
-.btn {
-  text-decoration: none;
-  text-align: center;
-  align-self: center;
-  width: fit-content;
-  padding: 10px 40px;
-  border-radius: 4px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  margin-bottom: 4px;
-  color: whitesmoke;
-  border: none;
-  margin: 8px;
-  border-radius: 4px;
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  a {
+    text-decoration: none;
+    margin: 8px;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-size: 2.5vw;
+  }
+  .btn-upload {
+    color: #3b3939;
+    border-bottom: solid 5px $blue;
+    &:hover {
+      /* NEED TO WORK ON THIS! */
+      background-color: $yellow;
+      color: $soft;
+      border-bottom: solid 5px $yellow;
+    }
+  }
+  .btn-yellow {
+    background-color: $yellow;
+    color: whitesmoke;
+  }
+  .btn-red {
+    background-color: $red;
+    color: whitesmoke;
+  }
+  .btn-log {
+    /* This class makes the sign-in/up buttons responsives */
+    font-size: 1rem;
+    padding: 1vw, 1vh;
+    white-space: nowrap;
+  }
 }
-
 
 .btn-book {
   background-color: $dark-yellow;
@@ -54,29 +74,6 @@
   }
 }
 
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  a {
-    text-decoration: none;
-    margin: 8px;
-    padding: 10px 30px;
-    border-radius: 4px;
-    font-size: 2.5vw;
-  }
-  .btn-upload {
-    color: #3b3939;
-    border-bottom: solid 5px $blue;
-  }
-  .btn-yellow {
-    background-color: $yellow;
-    color: whitesmoke;
-  }
-  .btn-red {
-    background-color: $red;
-    color: whitesmoke;
-  }
-}
 .btn-blue{
   background-color: $vanners-blue;
   color: whitesmoke;
@@ -92,3 +89,21 @@
     color: $gray;
   }
 }
+
+// .btn {
+//   text-decoration: none;
+//   text-align: center;
+//   align-self: center;
+//   width: fit-content;
+//   padding: 10px 40px;
+//   border-radius: 4px;
+//   box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+//   margin-bottom: 4px;
+//   color: whitesmoke;
+//   border: none;
+//   margin: 8px;
+//   border-radius: 4px;
+//   @media only screen and (min-device-width: 100px) and (max-device-width: 768px) {
+//       width: 4.5rem;
+//   }
+// }
