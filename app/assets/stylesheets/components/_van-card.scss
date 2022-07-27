@@ -5,40 +5,52 @@
   grid-gap: 1rem;
   justify-content: space-evenly;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   a:link {
     text-decoration: none;
   }
 }
+// responsiveness for grid
+@media (min-width: 100px) {
+  .cards { grid-template-columns: repeat(1, 1fr); }
+}
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
 
 .van-card {
   list-style: none;
-  border-radius: 15px;
-  padding: 5px;
-  max-width: 350px;
-  min-width: 25vw;
+  border-radius: 0.95rem;
+  padding: 0.3rem;
+  max-width: 22rem;
+  // min-width: 25vw;
+  min-width: 22.5rem;
   color: black;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0rem 0.375rem 0.625rem rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
-  height: 450px;
+  height: 28rem;
   .img-index-card {
     width: 100%;
-    border-radius: 10px 10px 0 0;
-    height: 175px;
+    border-radius: 0.625rem 0.625rem 0 0;
+    height: 11rem;
     object-fit: cover;
     object-position: center;
   }
   &:hover {
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 6px 0.625rem rgba(0, 0, 0, 0.4);
     transform: scale(1.01);
   }
 }
 
 .card-info {
-  padding: 10px;
+  padding: 0.625rem;
   display: flex;
   flex-direction: column;
-  height: 270px;
+  height: 11rem;
   justify-content: space-between;
   }
   .card-top-info{
@@ -49,7 +61,7 @@
     }
     .card-title {
       font-weight: bold;
-      height: 80px;
+      height: 5rem;
     }
   }
 
