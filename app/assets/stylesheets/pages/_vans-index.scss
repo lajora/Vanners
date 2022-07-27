@@ -32,7 +32,7 @@
   justify-content: space-around;
   width: 75vw;
   margin: 0 auto;
-  padding: 30px;
+  padding: 1.875rem;
   .sb {
     display: flex;
   }
@@ -46,10 +46,10 @@
   .ymd {
     box-shadow : none;
     border: none;
-    border-bottom: 5px solid #db2647;
+    border-bottom: 0.3rem solid #db2647;
     background-color: transparent;
     font-style: italic;
-    margin: 0 30px;
+    margin: 0 1.875rem;
   }
   h2 {
     margin: auto;
