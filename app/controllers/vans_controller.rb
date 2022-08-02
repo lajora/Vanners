@@ -29,6 +29,7 @@ class VansController < ApplicationController
     @date_to = params[:date_to].present? ?  Date.strptime(params[:date_to], '%Y-%m-%d') : @date_from + 7
     @num_days = (@date_to - @date_from).to_i
     authorize @van
+    @active_bookings = @van.bookings.where(status: "pending")
     @booking = Booking.new
     authorize @booking
   end

@@ -41,13 +41,13 @@
               <h6 class="h6-bold">Total</h6>
               <p class="p-bold">€<%= @van.price * @num_days%></p>
             </div>
-            <% if policy(@van).edit? && policy(@van).destroy? && @van.bookings.length == 0 %>
+            <% if policy(@van).edit? && policy(@van).destroy? && @active_bookings.length == 0 %>
               <%= link_to "Update", edit_van_path(@van) %>
               <%= link_to "Delete the van :(", van_path(@van), method: :delete %>
             <% elsif @van.user != current_user %>
               <%= f.submit "Book now", class: "btn btn-book" %>
             <% else %>
-            <h6>You can't delete or update your van right now. You have some bookings oncoming! </h6>
+            <h6>You can't delete or update your van right now. You have some pending bookings! </h6>
             <% end %>
           </div>
         </div>
